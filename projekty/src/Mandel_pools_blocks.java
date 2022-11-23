@@ -20,7 +20,7 @@ public class Mandel_pools_blocks {
 
     public static int max_block = Runtime.getRuntime().availableProcessors();
 
-    public static int reapeats = 2;
+    public static int reapeats = 10;
     public static int[] sizes = {32, 64, 128, 256, 512, 1024, 2048, 4096, 8192};
     public static int[] block_sizes = {4, 8, 16, 32, 64, 128};
 
@@ -81,7 +81,7 @@ public class Mandel_pools_blocks {
         try {
             PrintWriter pw = new PrintWriter(csvFile);
 
-            for (int s = 0; s < sizes.length - 4; s++) {
+            for (int s = 0; s < sizes.length - 1; s++) {
 
                 for (int b = 0; b < block_sizes.length && block_sizes[b] <= sizes[s]; b++) { 
 
