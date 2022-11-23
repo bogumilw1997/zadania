@@ -34,6 +34,14 @@ g1 = sns.regplot(x = 'size', y= 'time', data=df.iloc[1: , :], ax=ax, marker="o",
 sns.regplot(x = 'size', y= 'time', data=df2.iloc[1: , :], ax=ax, marker="o", order=1, x_estimator=np.mean, ci=95, label="multi-thr")
 sns.regplot(x = 'size', y= 'time', data=df3.iloc[1: , :], ax=ax, marker="o", order=1, x_estimator=np.mean, ci=95, label="pools-cont")
 sns.regplot(x = 'size', y= 'time', data=df4.iloc[1: , :], ax=ax, marker="o", order=1, x_estimator=np.mean, ci=95, label="pools-once")
+columns = ["size","block_size", "time"]
+df = pd.read_csv('semestr3\Wdpr\zadania\projekty\output\Mandel_pools_block_size_times.csv', header=None, names=columns)
+df["size"] = df["size"]**2
+sns.regplot(x = 'size', y= 'time',data=df[df["block_size"] == 8].iloc[1: , :], ax=ax, marker="o", order=1, x_estimator=np.mean, ci=95, label="block-size 8")
+sns.regplot(x = 'size', y= 'time', data=df[df["block_size"] == 16].iloc[1: , :], ax=ax, marker="o", order=1, x_estimator=np.mean, ci=95, label="block-size 16")
+sns.regplot(x = 'size', y= 'time', data=df[df["block_size"] == 32].iloc[1: , :], ax=ax, marker="o", order=1, x_estimator=np.mean, ci=95, label="block-size 32")
+sns.regplot(x = 'size', y= 'time', data=df[df["block_size"] == 64].iloc[1: , :], ax=ax, marker="o", order=1, x_estimator=np.mean, ci=95, label="block-size 64")
+sns.regplot(x = 'size', y= 'time', data=df[df["block_size"] == 128].iloc[1: , :], ax=ax, marker="o", order=1, x_estimator=np.mean, ci=95, label="block-size 128")
 
 g1.set_xlabel('size [px]')
 g1.set_ylabel('time [ms]')

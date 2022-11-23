@@ -67,7 +67,7 @@ public class Mandelbrot{
         double[] e1 = {-2.1, -1.2};
         double[] e2 = {0.6, 1.2};
 
-        int iter = 100;
+        int iter = 200;
 
         double time;
         
@@ -75,7 +75,7 @@ public class Mandelbrot{
 
         try {
             PrintWriter pw = new PrintWriter(csvFile);
-            for (int s = 0; s < sizes.length; s++) { 
+            for (int s = 0; s < sizes.length - 1; s++) { 
     
                 for (int r = 0; r < reapeats; r++) {
     
@@ -86,6 +86,7 @@ public class Mandelbrot{
                     time = (double)((stop - start) / 1000000.0);
 
                     pw.printf(Locale.US, "%d,%f\n", sizes[s], time);
+                    System.out.println("Skonczono " + sizes[s]);
                 }
             }
             pw.close();
@@ -107,17 +108,17 @@ public class Mandelbrot{
 
         int reapeats = 10;
         int[] sizes = {32, 64, 128, 256, 512, 1024, 2048, 4096, 8192};
-        // measure_time(sizes, reapeats);
+        measure_time(sizes, reapeats);
 
-        BufferedImage bImg = draw(width, heigh, e1, e2, iter);
+        // BufferedImage bImg = draw(width, heigh, e1, e2, iter);
 
-        File outputfile = new File("semestr3/Wdpr/zadania/projekty/output/Mandelbrot.png");
+        // File outputfile = new File("semestr3/Wdpr/zadania/projekty/output/Mandelbrot.png");
         
-        try {
-            ImageIO.write(bImg, "png", outputfile);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        // try {
+        //     ImageIO.write(bImg, "png", outputfile);
+        // } catch (IOException e) {
+        //     // TODO Auto-generated catch block
+        //     e.printStackTrace();
+        // }
     }
 }
