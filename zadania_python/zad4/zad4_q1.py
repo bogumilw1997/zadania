@@ -8,7 +8,7 @@ def reciever():
     queue = "queue2"
     
     credentials = pika.PlainCredentials('wdprir', 'wdprir')
-    connection_parameters = pika.ConnectionParameters('54.37.137.241', virtual_host = 'wdprir', credentials = credentials)
+    connection_parameters = pika.ConnectionParameters('...', virtual_host = '...', credentials = credentials)
     connection = pika.BlockingConnection(connection_parameters)
 
     channel = connection.channel()
@@ -38,7 +38,8 @@ def sender():
     channel.queue_declare(queue)
     
     while(True):
-        mess = input('Enter message: ')
+        #mess = input('Enter message: ')
+        mess = input()
         print("You typed: " + mess)
         channel.basic_publish("", queue, mess)
         
